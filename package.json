@@ -1,0 +1,22 @@
+{
+  "name": "enterprise-playwright-framework",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Enterprise Playwright automation framework with TypeScript, POM, fixtures, reporting, and environment support.",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:qa": "cross-env TEST_ENV=qa npx playwright test",
+    "test:uat": "cross-env TEST_ENV=uat npx playwright test",
+    "test:prod": "cross-env TEST_ENV=prod npx playwright test",
+    "test:report": "npx playwright show-report",
+    "test:debug": "npx playwright test --debug",
+    "format": "npx prettier --write ."
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.41.0",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "typescript": "^5.5.4",
+    "@types/node": "^20.14.2"
+  }
+}
