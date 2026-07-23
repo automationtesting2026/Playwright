@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "CommonJS",
+    "lib": ["ES2021", "DOM"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": false,
+    "types": ["node", "@playwright/test"],
+    "baseUrl": "."
+  },
+  "include": [
+    "tests",
+    "pages",
+    "locators",
+    "fixtures",
+    "utils",
+    "helpers",
+    "config",
+    "constants",
+    "test-data",
+    "playwright.config.ts"
+  ]
+}

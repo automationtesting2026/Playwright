@@ -1,0 +1,10 @@
+node_modules/
+test-results/
+reports/html/
+screenshots/
+videos/
+reports/logs/
+.env.local
+.DS_Store
+.idea/
+.vscode/
