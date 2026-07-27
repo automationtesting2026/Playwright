@@ -5,9 +5,8 @@
   "description": "Enterprise Playwright automation framework with TypeScript, POM, fixtures, reporting, and environment support.",
   "scripts": {
     "test": "npx playwright test",
-    "test:qa": "cross-env TEST_ENV=qa npx playwright test",
-    "test:uat": "cross-env TEST_ENV=uat npx playwright test",
-    "test:prod": "cross-env TEST_ENV=prod npx playwright test",
+    "test:chrome": "npx playwright test tests/login-chrome.spec.ts --project=chrome",
+    "auth:save": "node scripts/save-auth.js",
     "test:report": "npx playwright show-report",
     "test:debug": "npx playwright test --debug",
     "format": "npx prettier --write ."

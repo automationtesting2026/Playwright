@@ -13,16 +13,18 @@ test('Scrap module end-to-end', async ({ page, env, logger }) => {
   await login.login(env.username, env.password);
   await page.screenshot({ path: `screenshots/step-1-home-${Date.now()}.png`, fullPage: true });
 
-  // Open SWIFT and then New Request inside SWIFT
-  const swiftResult = await home.clickSwiftTile();
-  logger.info('SWIFT result: ' + (swiftResult ? 'opened' : 'not-opened'));
-  const swiftPage: any = swiftResult && typeof swiftResult === 'object' && typeof swiftResult.url === 'function' ? swiftResult : page;
-  const scrap = new ScrapPage(swiftPage);
+  // Open E scrap module and then New Request inside that module
+  const escrapResult = await home.clickEscrapTile();
+  logger.info('Escrap module result: ' + (escrapResult ? 'opened' : 'not-opened'));
+  const escrapPage: any = escrapResult && typeof escrapResult === 'object' && typeof escrapResult.url === 'function' ? escrapResult : page;
+  logger.info(`E scrap page URL: ${await escrapPage.url()}`);
+  await escrapPage.screenshot({ path: `screenshots/step-2-after-escrap-click-${Date.now()}.png`, fullPage: true });
+  const scrap = new ScrapPage(escrapPage);
   await scrap.openNewRequest();
-  await page.screenshot({ path: `screenshots/step-2-request-modal-${Date.now()}.png` });
+  await escrapPage.screenshot({ path: `screenshots/step-3-request-modal-${Date.now()}.png`, fullPage: true });
 
   await scrap.selectScrapType('Tractor Scrap');
-  await page.screenshot({ path: `screenshots/step-3-scrap-type-${Date.now()}.png` });
+  await escrapPage.screenshot({ path: `screenshots/step-3-tractor-scrap-selected-${Date.now()}.png`, fullPage: true });
 
   await scrap.fillBasicDetails('Platform2', 'Project C');
   await page.screenshot({ path: `screenshots/step-4-basic-details-${Date.now()}.png`, fullPage: true });

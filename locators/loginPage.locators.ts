@@ -4,7 +4,10 @@ export const loginPageLocators = {
     "xpath=//input[@type='email'] | //input[contains(translate(@placeholder, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'email')] | //input[contains(translate(@placeholder, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'user')] | //input[contains(translate(@placeholder, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'username')] | //input[contains(translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'user')] | //input[contains(translate(@id, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'user') ]",
   // Use password input by type
   passwordInput: "xpath=//input[@type='password'] | //input[contains(translate(@placeholder, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'password')]",
-  loginButton: "xpath=//button[normalize-space()='Sign In']",
+  // Target the Sign In button specifically by role to avoid matching non-button text
+  loginButton: "role=button[name=\"Sign In\"]",
+  // Checkbox or label to reveal the password text
+  showPassword: "xpath=//label[contains(translate(normalize-space(.), 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'show password')]/input[@type='checkbox'] | //input[@type='checkbox' and (contains(translate(@id, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'show') or contains(translate(@name, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ', 'abcdefghijklmnopqrstuvwxyz'), 'show'))]",
   homePageValidation: 'xpath=YOUR_HOME_PAGE_VALIDATION_XPATH',
   // Tile on the home page for the SWIFT application
   swiftTile: "xpath=//div[.//text()[normalize-space()='SWIFT']] | //div[contains(., 'SWIFT')]",

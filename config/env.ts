@@ -2,13 +2,10 @@ import * as dotenv from 'dotenv';
 import path from 'path';
 import environmentMap, { EnvironmentConfig } from './environments';
 
-const envFile = process.env.TEST_ENV ? `.env.${process.env.TEST_ENV}` : '.env';
-const envPath = path.resolve(process.cwd(), envFile);
+// Always load the single `.env` file for the initial minimal setup
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
-dotenv.config({ path: envPath });
-
-const testEnv = process.env.TEST_ENV || process.env.NODE_ENV || 'qa';
-const environment = environmentMap[testEnv.toLowerCase()] ?? environmentMap.qa;
+const environment = environmentMap.qa;
 
 const envConfig: EnvironmentConfig = {
   ...environment,

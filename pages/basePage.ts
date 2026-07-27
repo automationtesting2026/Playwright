@@ -2,7 +2,7 @@ import { Page, Locator } from '@playwright/test';
 import { AppConstants } from '../constants/appConstants';
 
 export abstract class BasePage {
-  protected readonly page: Page;
+  protected page: Page;
 
   constructor(page: Page) {
     this.page = page;

@@ -8,7 +8,7 @@ export default defineConfig({
     timeout: 10_000
   },
   forbidOnly: !!process.env.CI,
-  retries: process.env.CI ? 2 : 1,
+  retries:  1 ,
   workers: process.env.CI ? 2 : 4,
   reporter: [
     ['html', { outputFolder: 'reports/html', open: 'never' }],
@@ -17,7 +17,7 @@ export default defineConfig({
   outputDir: 'test-results',
   use: {
     baseURL: envConfig.baseUrl,
-    headless: true,
+    headless: false,
     viewport: { width: 1280, height: 720 },
     actionTimeout: 15_000,
     ignoreHTTPSErrors: true,
@@ -30,20 +30,9 @@ export default defineConfig({
       name: 'chrome',
       use: {
         ...devices['Desktop Chrome'],
-        channel: 'chrome'
-      }
-    },
-    {
-      name: 'edge',
-      use: {
-        ...devices['Desktop Edge'],
-        channel: 'msedge'
-      }
-    },
-    {
-      name: 'firefox',
-      use: {
-        ...devices['Desktop Firefox']
+        channel: 'chrome',
+        // Use a standard Chrome user agent to reduce automation detection
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36'
       }
     }
   ]
